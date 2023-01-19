@@ -16,10 +16,16 @@
       <header>
         <h1><span class="white-text">Generate a</span><br />random password</h1>
         <h2>Never use an insecure password again.</h2>
-        <button id="generate-btn" onclick="generatePasswords()">
-          <i class="fa-solid fa-bolt"></i>Generate Password
-        </button>
-        <!--Add input field to select password length-->
+        <section class="row">
+          <button id="generate-btn" onclick="generatePasswords()">
+            <i class="fa-solid fa-bolt"></i>Generate Password
+          </button>
+          <input 
+            id="char-length"
+            type="number"
+            value=16
+          />
+        </section>
       </header>
       <section class="container">
         <div class="row">

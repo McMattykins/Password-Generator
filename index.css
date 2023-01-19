@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
@@ -29,6 +33,7 @@ h2 {
 .row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 button {
   margin: 1em 0;
@@ -56,4 +61,14 @@ button {
 #generate-btn {
   color: white;
   font-size: 0.8rem;
+}
+
+#char-length {
+  display: inline-block;
+  width: 45%;
+  line-height: 1rem;
+  padding: 0.3em;
+  text-align: center;
+  border-radius: 5px;
+  border: #10b981 solid 2px
 }
