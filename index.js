@@ -1,11 +1,10 @@
-let passwords = [];
-let passwordLength = 16; //Can be changed to adjust the length of passwords. Will add to the UI later.
+const password1 = document.getElementById("password-1");
+const password2 = document.getElementById("password-2");
+const password3 = document.getElementById("password-3");
+const password4 = document.getElementById("password-4");
+let hasPassword = false
 
-password1 = document.getElementById("password-1");
-password2 = document.getElementById("password-2");
-password3 = document.getElementById("password-3");
-password4 = document.getElementById("password-4");
-
+const passwords = [password1, password2, password3, password4];
 //Creates an array of usable characters from 33 - 126 of ascii
 let characters = [];
 for (let i = 33; i <= 126; i++) {
@@ -14,14 +13,15 @@ for (let i = 33; i <= 126; i++) {
 
 //Generates a unique password for each field.
 function generatePasswords() {
-  password1.textContent = generatePassword();
-  password2.textContent = generatePassword();
-  password3.textContent = generatePassword();
-  password4.textContent = generatePassword();
+  for (let password of passwords) {
+    password.textContent = generatePassword();
+  }
+  hasPassword = true;
 }
 
 //Generates a password of the desired length and returns it as a single string.
 function generatePassword() {
+  const passwordLength = document.getElementById("char-length").value; 
   let password = [];
   for (i = 0; i < passwordLength; i++) {
     password.push(selectRandom());
@@ -36,3 +36,7 @@ function selectRandom() {
 }
 
 //Add eventListener for the passwords to copy to clipboard on click.
+addEventListener("click", ({target}) => {
+  const cb = navigator.clipboard;
+  (target.className === "pw-button" && hasPassword) && cb.writeText(target.textContent).then(() => alert("Password copied"))
+})
